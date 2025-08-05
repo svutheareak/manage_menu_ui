@@ -585,20 +585,25 @@
         }
 
         /* Responsive Design */
+        /* Sidebar on mobile */
         @media (max-width: 768px) {
             .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                transform: translateX(-100%);
+                position: fixed;
+                top: 0;
+                left: -250px;
+                width: 250px;
+                height: 100%;
+                background-color: var(--sidebar-bg, #1e1e2f);
+                z-index: 2000; /* ABOVE the backdrop */
+                transition: left 0.3s ease;
             }
 
             .sidebar.mobile-open {
-                transform: translateX(0);
+                left: 0;
             }
 
             .main-content {
-                margin-left: 0;
+                margin-left: 0 !important;
             }
 
             .main-content.expanded {
@@ -695,3 +700,17 @@
         .notification.warning {
             border-left-color: var(--warning-color);
         }
+
+        .backdrop {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000; /* BELOW the sidebar */
+        }
+
+        .backdrop.show {
+            display: block;
+        }
+        

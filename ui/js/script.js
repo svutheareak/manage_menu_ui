@@ -3,6 +3,8 @@ let currentTheme = 'default';
 let sidebarCollapsed = false;
 let currentPage = 'dashboard';
 
+const backdrop = document.getElementById('backdrop');
+
 // DOM Elements
 const sidebar = document.getElementById('sidebar');
 const mainContent = document.getElementById('mainContent');
@@ -25,13 +27,29 @@ document.addEventListener('DOMContentLoaded', function () {
 // Event Listeners Setup
 function setupEventListeners() {
     sidebarToggle.addEventListener('click', toggleSidebar);
-    mobileMenuBtn.addEventListener('click', toggleMobileSidebar);
+
+    // Mobile menu open/close
+    mobileMenuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('mobile-open');
+        backdrop.classList.toggle('show');
+    });
+
+    // Hide when clicking backdrop
+    backdrop.addEventListener('click', () => {
+        sidebar.classList.remove('mobile-open');
+        backdrop.classList.remove('show');
+    });
 
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
             const page = this.getAttribute('data-page');
             navigateToPage(page);
+            // close menu after navigation on mobile
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('mobile-open');
+                backdrop.classList.remove('show');
+            }
         });
     });
 
@@ -43,18 +61,24 @@ function setupEventListeners() {
     });
 
     document.addEventListener('click', function (e) {
-        if (window.innerWidth <= 768 && !sidebar.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        if (window.innerWidth <= 768 &&
+            !sidebar.contains(e.target) &&
+            !mobileMenuBtn.contains(e.target) &&
+            !backdrop.contains(e.target)) {
             sidebar.classList.remove('mobile-open');
+            backdrop.classList.remove('show');
         }
     });
 
     window.addEventListener('resize', function () {
         if (window.innerWidth > 768) {
             sidebar.classList.remove('mobile-open');
+            backdrop.classList.remove('show');
             mainContent.classList.remove('expanded');
         }
     });
 }
+
 
 // Navigation
 function navigateToPage(page) {
