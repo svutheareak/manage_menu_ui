@@ -3,114 +3,617 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Web Application</title>
+    <title>Menu Management System</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Login Form -->
-        <div class="login-container" id="loginForm">
-            <div class="logo">WA</div>
-            <h1 class="login-title">Welcome Back</h1>
-            <p class="login-subtitle">Sign in to your account</p>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar" id="sidebar">
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <span>‹</span>
+            </button>
             
-            <form id="loginFormElement">
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required placeholder="Enter your email">
-                </div>
-                
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required placeholder="Enter your password">
-                </div>
-                
-                <button type="submit" class="login-btn" id="loginBtn">
-                    Sign In
-                </button>
-            </form>
+            <div class="sidebar-header">
+                <div class="logo">MS</div>
+                <h2 class="sidebar-title">Menu System</h2>
+            </div>
             
-            <a href="#" class="forgot-password">Forgot your password?</a>
-        </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" data-page="dashboard">
+                        <span class="nav-icon">📊</span>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="menus">
+                        <span class="nav-icon">🍽️</span>
+                        <span class="nav-text">Menu Items</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="categories">
+                        <span class="nav-icon">📂</span>
+                        <span class="nav-text">Categories</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="orders">
+                        <span class="nav-icon">📋</span>
+                        <span class="nav-text">Orders</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="customers">
+                        <span class="nav-icon">👥</span>
+                        <span class="nav-text">Customers</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="analytics">
+                        <span class="nav-icon">📈</span>
+                        <span class="nav-text">Analytics</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="profile">
+                        <span class="nav-icon">👤</span>
+                        <span class="nav-text">Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="settings">
+                        <span class="nav-icon">⚙️</span>
+                        <span class="nav-text">Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
-        <!-- Dashboard -->
-        <div class="dashboard" id="dashboard" style="display: none;">
-            <div class="dashboard-header">
-                <h1 class="dashboard-title">Dashboard</h1>
-                <div class="user-info">
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <!-- Header -->
+            <header class="header">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+                <h1 class="page-title" id="pageTitle">Dashboard</h1>
+                <div class="header-actions">
+                    <button class="notification-btn">
+                        <span>🔔</span>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <button class="user-menu-btn">
+                        <span>👤</span>
+                    </button>
                     <div class="user-avatar" id="userAvatar">JD</div>
-                    <span id="userName">John Doe</span>
-                    <button class="logout-btn" id="logoutBtn">Logout</button>
                 </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Dashboard Page -->
+                <section class="page-section active" id="dashboard">
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <div class="card-icon">🍽️</div>
+                                <div class="card-title">Total Menu Items</div>
+                            </div>
+                            <div class="card-value">247</div>
+                            <div class="card-description">Active menu items in system</div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <div class="card-icon">📋</div>
+                                <div class="card-title">Today's Orders</div>
+                            </div>
+                            <div class="card-value">89</div>
+                            <div class="card-description">Orders received today</div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <div class="card-icon">💰</div>
+                                <div class="card-title">Revenue</div>
+                            </div>
+                            <div class="card-value">$2,847</div>
+                            <div class="card-description">Total revenue this month</div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <div class="card-icon">👥</div>
+                                <div class="card-title">Active Customers</div>
+                            </div>
+                            <div class="card-value">1,259</div>
+                            <div class="card-description">Registered customers</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Menu Items Page -->
+                <section class="page-section" id="menus">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                        <h2 style="color: var(--text-primary);">Menu Items</h2>
+                        <button class="btn btn-primary">
+                            <span>➕</span> Add New Item
+                        </button>
+                    </div>
+                    
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div class="menu-item-image">🍕</div>
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Margherita Pizza</h3>
+                                <p class="menu-item-description">Classic pizza with fresh tomatoes, mozzarella, and basil</p>
+                                <div class="menu-item-price">$12.99</div>
+                                <div class="menu-item-actions">
+                                    <button class="btn btn-primary">Edit</button>
+                                    <button class="btn btn-secondary">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="menu-item-image">🍔</div>
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Beef Burger</h3>
+                                <p class="menu-item-description">Juicy beef patty with lettuce, tomato, and special sauce</p>
+                                <div class="menu-item-price">$9.99</div>
+                                <div class="menu-item-actions">
+                                    <button class="btn btn-primary">Edit</button>
+                                    <button class="btn btn-secondary">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="menu-item-image">🥗</div>
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Caesar Salad</h3>
+                                <p class="menu-item-description">Fresh romaine lettuce with Caesar dressing and croutons</p>
+                                <div class="menu-item-price">$7.99</div>
+                                <div class="menu-item-actions">
+                                    <button class="btn btn-primary">Edit</button>
+                                    <button class="btn btn-secondary">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Profile Page -->
+                <section class="page-section" id="profile">
+                    <div class="settings-section">
+                        <div class="profile-header">
+                            <div class="profile-avatar">JD</div>
+                            <div class="profile-info">
+                                <h2>John Doe</h2>
+                                <p>Restaurant Manager</p>
+                                <p>Member since January 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h3 class="settings-title">
+                            <span>👤</span> Personal Information
+                        </h3>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                            <div class="form-group">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-input" value="John" placeholder="Enter first name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-input" value="Doe" placeholder="Enter last name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-input" value="john.doe@restaurant.com" placeholder="Enter email">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Phone</label>
+                                <input type="tel" class="form-input" value="+1 (555) 123-4567" placeholder="Enter phone number">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Position</label>
+                                <select class="form-select">
+                                    <option value="manager" selected>Restaurant Manager</option>
+                                    <option value="chef">Head Chef</option>
+                                    <option value="admin">Administrator</option>
+                                    <option value="staff">Staff Member</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Restaurant</label>
+                                <input type="text" class="form-input" value="The Golden Fork" placeholder="Restaurant name">
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" style="margin-top: 20px;">
+                            <span>💾</span> Save Changes
+                        </button>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h3 class="settings-title">
+                            <span>🔒</span> Security Settings
+                        </h3>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                            <div class="form-group">
+                                <label class="form-label">Current Password</label>
+                                <input type="password" class="form-input" placeholder="Enter current password">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">New Password</label>
+                                <input type="password" class="form-input" placeholder="Enter new password">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Confirm New Password</label>
+                                <input type="password" class="form-input" placeholder="Confirm new password">
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" style="margin-top: 20px;">
+                            <span>🔒</span> Update Password
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Settings Page -->
+                <section class="page-section" id="settings">
+                    <div class="settings-section">
+                        <h3 class="settings-title">
+                            <span>🎨</span> Theme Customization
+                        </h3>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Choose Theme Color</label>
+                            <div class="theme-selector">
+                                <div class="theme-option active" data-theme="default">
+                                    <div class="theme-preview blue"></div>
+                                    <span>Blue</span>
+                                </div>
+                                <div class="theme-option" data-theme="purple">
+                                    <div class="theme-preview purple"></div>
+                                    <span>Purple</span>
+                                </div>
+                                <div class="theme-option" data-theme="green">
+                                    <div class="theme-preview green"></div>
+                                    <span>Green</span>
+                                </div>
+                                <div class="theme-option" data-theme="orange">
+                                    <div class="theme-preview orange"></div>
+                                    <span>Orange</span>
+                                </div>
+                                <div class="theme-option" data-theme="dark">
+                                    <div class="theme-preview dark"></div>
+                                    <span>Dark</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h3 class="settings-title">
+                            <span>🏪</span> Restaurant Settings
+                        </h3>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                            <div class="form-group">
+                                <label class="form-label">Restaurant Name</label>
+                                <input type="text" class="form-input" value="The Golden Fork" placeholder="Enter restaurant name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Cuisine Type</label>
+                                <select class="form-select">
+                                    <option value="italian">Italian</option>
+                                    <option value="american">American</option>
+                                    <option value="asian">Asian</option>
+                                    <option value="mexican">Mexican</option>
+                                    <option value="french">French</option>
+                                    <option value="mixed" selected>Mixed Cuisine</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" class="form-input" value="+1 (555) 987-6543" placeholder="Restaurant phone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-input" value="info@goldenfork.com" placeholder="Restaurant email">
+                            </div>
+                            
+                            <div class="form-group" style="grid-column: 1 / -1;">
+                                <label class="form-label">Address</label>
+                                <textarea class="form-textarea" rows="3" placeholder="Enter restaurant address">123 Main Street, Downtown, City 12345</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h3 class="settings-title">
+                            <span>⏰</span> Operating Hours
+                        </h3>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                            <div class="form-group">
+                                <label class="form-label">Monday - Friday</label>
+                                <div style="display: flex; gap: 10px; align-items: center;">
+                                    <input type="time" class="form-input" value="09:00" style="flex: 1;">
+                                    <span>to</span>
+                                    <input type="time" class="form-input" value="22:00" style="flex: 1;">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Saturday - Sunday</label>
+                                <div style="display: flex; gap: 10px; align-items: center;">
+                                    <input type="time" class="form-input" value="10:00" style="flex: 1;">
+                                    <span>to</span>
+                                    <input type="time" class="form-input" value="23:00" style="flex: 1;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h3 class="settings-title">
+                            <span>🔔</span> Notification Settings
+                        </h3>
+                        
+                        <div style="display: grid; gap: 15px;">
+                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                <input type="checkbox" checked style="margin: 0;">
+                                <span>Email notifications for new orders</span>
+                            </label>
+                            
+                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                <input type="checkbox" checked style="margin: 0;">
+                                <span>SMS notifications for urgent orders</span>
+                            </label>
+                            
+                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                <input type="checkbox" style="margin: 0;">
+                                <span>Daily sales report emails</span>
+                            </label>
+                            
+                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                <input type="checkbox" checked style="margin: 0;">
+                                <span>Low inventory alerts</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h3 class="settings-title">
+                            <span>💾</span> Data Management
+                        </h3>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                            <button class="btn btn-outline">
+                                <span>📤</span> Export Data
+                            </button>
+                            
+                            <button class="btn btn-outline">
+                                <span>📥</span> Import Data
+                            </button>
+                            
+                            <button class="btn btn-outline">
+                                <span>💾</span> Backup Settings
+                            </button>
+                            
+                            <button class="btn btn-secondary">
+                                <span>🔄</span> Reset to Default
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+                        <button class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1em;">
+                            <span>💾</span> Save All Settings
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Categories Page -->
+                <section class="page-section" id="categories">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                        <h2 style="color: var(--text-primary);">Menu Categories</h2>
+                        <button class="btn btn-primary">
+                            <span>➕</span> Add Category
+                        </button>
+                    </div>
+                    
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <div class="card-icon">🍕</div>
+                                <div class="card-title">Pizza</div>
+                            </div>
+                            <div class="card-value">15</div>
+                            <div class="card-description">Menu items in category</div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <div class="card-icon">🍔</div>
+                                <div class="card-title">Burgers</div>
+                            </div>
+                            <div class="card-value">8</div>
+                            <div class="card-description">Menu items in category</div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <div class="card-icon">🥗</div>
+                                <div class="card-title">Salads</div>
+                            </div>
+                            <div class="card-value">12</div>
+                            <div class="card-description">Menu items in category</div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <div class="card-icon">🍰</div>
+                                <div class="card-title">Desserts</div>
+                            </div>
+                            <div class="card-value">6</div>
+                            <div class="card-description">Menu items in category</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Orders Page -->
+                <section class="page-section" id="orders">
+                    <h2 style="color: var(--text-primary); margin-bottom: 30px;">Recent Orders</h2>
+                    
+                    <div class="settings-section">
+                        <div style="overflow-x: auto;">
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <thead>
+                                    <tr style="border-bottom: 2px solid var(--border-color);">
+                                        <th style="padding: 15px; text-align: left; color: var(--text-primary);">Order ID</th>
+                                        <th style="padding: 15px; text-align: left; color: var(--text-primary);">Customer</th>
+                                        <th style="padding: 15px; text-align: left; color: var(--text-primary);">Items</th>
+                                        <th style="padding: 15px; text-align: left; color: var(--text-primary);">Total</th>
+                                        <th style="padding: 15px; text-align: left; color: var(--text-primary);">Status</th>
+                                        <th style="padding: 15px; text-align: left; color: var(--text-primary);">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid var(--border-color);">
+                                        <td style="padding: 15px; color: var(--text-primary);">#ORD-001</td>
+                                        <td style="padding: 15px; color: var(--text-primary);">John Smith</td>
+                                        <td style="padding: 15px; color: var(--text-secondary);">2x Pizza, 1x Salad</td>
+                                        <td style="padding: 15px; color: var(--primary-color); font-weight: bold;">$32.97</td>
+                                        <td style="padding: 15px;">
+                                            <span style="background: var(--success-color); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">Completed</span>
+                                        </td>
+                                        <td style="padding: 15px;">
+                                            <button class="btn btn-primary" style="padding: 5px 10px; font-size: 0.8em;">View</button>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color);">
+                                        <td style="padding: 15px; color: var(--text-primary);">#ORD-002</td>
+                                        <td style="padding: 15px; color: var(--text-primary);">Sarah Johnson</td>
+                                        <td style="padding: 15px; color: var(--text-secondary);">1x Burger, 1x Fries</td>
+                                        <td style="padding: 15px; color: var(--primary-color); font-weight: bold;">$15.98</td>
+                                        <td style="padding: 15px;">
+                                            <span style="background: var(--warning-color); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">Preparing</span>
+                                        </td>
+                                        <td style="padding: 15px;">
+                                            <button class="btn btn-primary" style="padding: 5px 10px; font-size: 0.8em;">View</button>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color);">
+                                        <td style="padding: 15px; color: var(--text-primary);">#ORD-003</td>
+                                        <td style="padding: 15px; color: var(--text-primary);">Mike Wilson</td>
+                                        <td style="padding: 15px; color: var(--text-secondary);">3x Pizza, 2x Drinks</td>
+                                        <td style="padding: 15px; color: var(--primary-color); font-weight: bold;">$45.95</td>
+                                        <td style="padding: 15px;">
+                                            <span style="background: var(--accent-color); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">Pending</span>
+                                        </td>
+                                        <td style="padding: 15px;">
+                                            <button class="btn btn-primary" style="padding: 5px 10px; font-size: 0.8em;">View</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Customers Page -->
+                <section class="page-section" id="customers">
+                    <h2 style="color: var(--text-primary); margin-bottom: 30px;">Customer Management</h2>
+                    
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <div class="card-icon">👤</div>
+                                <div class="card-title">John Smith</div>
+                            </div>
+                            <div class="card-value">$247</div>
+                            <div class="card-description">Total spent • 15 orders</div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <div class="card-icon">👤</div>
+                                <div class="card-title">Sarah Johnson</div>
+                            </div>
+                            <div class="card-value">$189</div>
+                            <div class="card-description">Total spent • 12 orders</div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <div class="card-icon">👤</div>
+                                <div class="card-title">Mike Wilson</div>
+                            </div>
+                            <div class="card-value">$156</div>
+                            <div class="card-description">Total spent • 8 orders</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Analytics Page -->
+                <section class="page-section" id="analytics">
+                    <h2 style="color: var(--text-primary); margin-bottom: 30px;">Analytics & Reports</h2>
+                    
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <div class="card-icon">📈</div>
+                                <div class="card-title">Monthly Revenue</div>
+                            </div>
+                            <div class="card-value">$12,847</div>
+                            <div class="card-description">+15% from last month</div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <div class="card-icon">🍽️</div>
+                                <div class="card-title">Popular Item</div>
+                            </div>
+                            <div class="card-value">Pizza</div>
+                            <div class="card-description">287 orders this month</div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <div class="card-icon">⭐</div>
+                                <div class="card-title">Average Rating</div>
+                            </div>
+                            <div class="card-value">4.8</div>
+                            <div class="card-description">Based on 156 reviews</div>
+                        </div>
+                    </div>
+                </section>
             </div>
-            
-            <div class="dashboard-content">
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon">📊</div>
-                        <div class="stat-number">2,847</div>
-                        <div class="stat-label">Total Users</div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon">💰</div>
-                        <div class="stat-number">$48,291</div>
-                        <div class="stat-label">Revenue</div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon">📈</div>
-                        <div class="stat-number">87.3%</div>
-                        <div class="stat-label">Growth Rate</div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon">🎯</div>
-                        <div class="stat-number">156</div>
-                        <div class="stat-label">Active Projects</div>
-                    </div>
-                </div>
-                
-                <div class="recent-activities">
-                    <h3 class="activities-title">Recent Activities</h3>
-                    
-                    <div class="activity-item">
-                        <div class="activity-icon">👤</div>
-                        <div class="activity-content">
-                            <div class="activity-text">New user registered: Sarah Johnson</div>
-                            <div class="activity-time">2 minutes ago</div>
-                        </div>
-                    </div>
-                    
-                    <div class="activity-item">
-                        <div class="activity-icon">💳</div>
-                        <div class="activity-content">
-                            <div class="activity-text">Payment received: $2,450.00</div>
-                            <div class="activity-time">15 minutes ago</div>
-                        </div>
-                    </div>
-                    
-                    <div class="activity-item">
-                        <div class="activity-icon">📄</div>
-                        <div class="activity-content">
-                            <div class="activity-text">New report generated: Q4 Analytics</div>
-                            <div class="activity-time">1 hour ago</div>
-                        </div>
-                    </div>
-                    
-                    <div class="activity-item">
-                        <div class="activity-icon">🔔</div>
-                        <div class="activity-content">
-                            <div class="activity-text">System maintenance completed</div>
-                            <div class="activity-time">3 hours ago</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </main>
     </div>
 
-    <!-- Link to external JS -->
-    <script src="js/script.js"></script>
+    <!-- Notification Container -->
+    <div class="notification" id="notification">
+        <span id="notificationText">Settings saved successfully!</span>
+    </div>
+
+ <script src="js/app.js"></script>
 </body>
 </html>
