@@ -500,6 +500,28 @@
             gap: 10px;
         }
 
+        .qr-result-container {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .qr-image-preview {
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .qr-emv-output {
+            flex: 2;
+            background: #222;
+            color: #0f0;
+            padding: 10px;
+            border-radius: 6px;
+            overflow-x: auto;
+            min-width: 250px;
+        }
+
         .form-group {
             margin-bottom: 20px;
         }
@@ -653,6 +675,14 @@
 
             .theme-selector {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .qr-result-container {
+                flex-direction: column;
+            }
+            .qr-image-preview {
+                max-width: 100%;
+                text-align: center;
             }
         }
 

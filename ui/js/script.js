@@ -254,3 +254,90 @@ document.addEventListener('keydown', function (e) {
         showNotification('Settings saved successfully!', 'success');
     }
 });
+
+//QR Code
+function parseEMV(qrString) {
+    let result = {};
+    let i = 0;
+
+    while (i < qrString.length) {
+        let id = qrString.substr(i, 2);
+        let len = parseInt(qrString.substr(i + 2, 2), 10);
+        let data = qrString.substr(i + 4, len);
+
+        // Nested parsing for Merchant Account Information (ID 30)
+        if (id === "30" || id === "26" || id === "51") {
+            data = parseEMV(data); // Recursive parse
+        }
+
+        result[id] = {
+            id,
+            name: emvTagNames[id] || "Unknown",
+            len,
+            data
+        };
+
+        i += 4 + len;
+    }
+    return result;
+}
+
+// Known EMV Tag names (add more if needed)
+const emvTagNames = {
+    "00": "Payload Format Indicator",
+    "01": "Point of Initiation Method",
+    "26": "Merchant Account Information",
+    "30": "Merchant Account Information",
+    "52": "Merchant Category Code",
+    "53": "Transaction Currency",
+    "58": "Country Code",
+    "59": "Merchant Name",
+    "60": "Merchant City",
+    "63": "CRC",
+    "99": "Unreserved Templates"
+};
+
+document.getElementById('decodeQrBtn').addEventListener('click', () => {
+    const fileInput = document.getElementById('qrFileInput');
+    if (fileInput.files.length === 0) {
+        alert("Please select a QR code image first.");
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function (event) {
+        const img = new Image();
+        img.onload = function () {
+            // Show preview image
+            const previewImg = document.getElementById('qrPreviewImage');
+            previewImg.src = event.target.result;
+            previewImg.style.display = "block";
+
+            // Decode QR
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d");
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+            if (code) {
+                document.getElementById('qrDecodedOutput').textContent = code.data;
+
+                try {
+                    const parsed = parseEMV(code.data);
+                    document.getElementById('qrEmvOutput').textContent =
+                        JSON.stringify(parsed, null, 2);
+                } catch (err) {
+                    document.getElementById('qrEmvOutput').textContent = "Parsing failed: " + err;
+                }
+            } else {
+                document.getElementById('qrDecodedOutput').textContent = "No QR code found";
+            }
+        };
+        img.src = event.target.result;
+    };
+    reader.readAsDataURL(fileInput.files[0]);
+});

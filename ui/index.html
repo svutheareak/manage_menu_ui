@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Management System</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
+
 </head>
 <body>
     <div class="app-container">
@@ -285,7 +287,29 @@
                         <h3 class="qr-decode-title">
                             <span>👾</span> QR Customization
                         </h3>
+
+                        <div class="qr-upload-container">
+                            <input type="file" id="qrFileInput" accept="image/*" />
+                            <button class="btn btn-primary" id="decodeQrBtn">Decode QR</button>
+                        </div>
+
+                        <h4>Raw QR Data</h4>
+                        <pre id="qrDecodedOutput" style="background:#222;color:#0f0;padding:10px;border-radius:6px;"></pre>
+                        
+                        <!-- <h4>EMV Parsed Data</h4>
+                        <pre id="qrEmvOutput" style="background:#222;color:#0f0;padding:10px;border-radius:6px;"></pre> -->
+                        <h4>EMV Parsed Data</h4>
+                        <div class="qr-result-container">
+                            <div class="qr-image-preview">
+                                <img id="qrPreviewImage" alt="QR Preview" style="max-width:100%; border-radius:6px; display:none;" />
+                            </div>
+                            <pre id="qrEmvOutput" class="qr-emv-output"></pre>
+                        </div>
+
+                    </div>
                 </section>
+
+
 
                 <!-- Settings Page -->
                 <section class="page-section" id="settings">
