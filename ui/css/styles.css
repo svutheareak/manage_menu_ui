@@ -480,6 +480,26 @@
             gap: 10px;
         }
 
+        /* QR Page */
+        .qr-decode-section {
+            background: var(--surface-color);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .qr-decode-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         .form-group {
             margin-bottom: 20px;
         }

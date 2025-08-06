@@ -104,7 +104,8 @@ function navigateToPage(page) {
         'customers': 'Customers',
         'analytics': 'Analytics',
         'profile': 'Profile',
-        'settings': 'Settings'
+        'settings': 'Settings',
+        'qr-decode' : 'QrDecode'
     };
     pageTitle.textContent = pageTitles[page] || 'Dashboard';
     currentPage = page;
@@ -242,7 +243,7 @@ setInterval(() => {
 document.addEventListener('keydown', function (e) {
     if (e.altKey && e.key >= '1' && e.key <= '8') {
         e.preventDefault();
-        const pages = ['dashboard', 'menus', 'categories', 'orders', 'customers', 'analytics', 'profile', 'settings'];
+        const pages = ['dashboard', 'menus', 'categories', 'orders', 'customers', 'analytics', 'profile', 'settings', 'qr-decode'];
         const pageIndex = parseInt(e.key) - 1;
         if (pages[pageIndex]) {
             navigateToPage(pages[pageIndex]);
