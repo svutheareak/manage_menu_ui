@@ -316,14 +316,29 @@
 
                 <!-- imageInfo -->
                 <section class="page-section" id="image-info">
-                    <div class="image-info-section">
-                        <h3 class="image-info-title">
-                            <span>🌁</span> Image Info
-                        </h3>
+                <div class="image-info-section">
+                    <h3 class="image-info-title">
+                        <span>🌁</span> Image Info
+                    </h3>
 
-                        
+                    <div class="image-upload-container">
+                        <input type="file" id="imageFileInput" accept="image/*" />
                     </div>
-                </section>
+
+                    <div class="image-result-container">
+                        <div class="image-preview">
+                            <img id="imagePreview" alt="Preview" style="max-width:100%; border-radius:6px; display:none;" />
+                        </div>
+                        <div class="image-meta">
+                            <p><b>Name:</b> <span id="imgName"></span></p>
+                            <p><b>Type:</b> <span id="imgType"></span></p>
+                            <p><b>Size:</b> <span id="imgSize"></span></p>
+                            <p><b>Dimensions:</b> <span id="imgDimensions"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
 
 
 
