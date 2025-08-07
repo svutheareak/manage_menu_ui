@@ -6,7 +6,8 @@
     <title>Menu Management System</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/exifr/dist/lite.umd.js"></script>
 </head>
 <body>
     <div class="app-container">
@@ -330,14 +331,19 @@
                             <img id="imagePreview" alt="Preview" style="max-width:100%; border-radius:6px; display:none;" />
                         </div>
                         <div class="image-meta">
+                            <h4>Basic Info</h4>
                             <p><b>Name:</b> <span id="imgName"></span></p>
                             <p><b>Type:</b> <span id="imgType"></span></p>
                             <p><b>Size:</b> <span id="imgSize"></span></p>
                             <p><b>Dimensions:</b> <span id="imgDimensions"></span></p>
+
+                            <h4>EXIF Metadata</h4>
+                            <pre id="imgExifData" style="background:#222;color:#0f0;padding:10px;border-radius:6px;white-space:pre-wrap;"></pre>
                         </div>
                     </div>
                 </div>
             </section>
+
 
 
 

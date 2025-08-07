@@ -343,7 +343,7 @@ document.getElementById('decodeQrBtn').addEventListener('click', () => {
 });
 
 // iamge info
-document.getElementById('imageFileInput').addEventListener('change', function() {
+document.getElementById('imageFileInput').addEventListener('change', async function () {
     const file = this.files[0];
     if (!file) return;
 
@@ -352,23 +352,32 @@ document.getElementById('imageFileInput').addEventListener('change', function() 
     const imgType = document.getElementById('imgType');
     const imgSize = document.getElementById('imgSize');
     const imgDimensions = document.getElementById('imgDimensions');
+    const imgExifData = document.getElementById('imgExifData');
 
-    // File Info
+    // Basic Info
     imgName.textContent = file.name;
     imgType.textContent = file.type;
     imgSize.textContent = (file.size / 1024).toFixed(2) + " KB";
 
-    // Show Preview + Dimensions
+    // Preview & Dimensions
     const reader = new FileReader();
-    reader.onload = function(e) {
+    reader.onload = function (e) {
         imgPreview.src = e.target.result;
         imgPreview.style.display = "block";
 
         const tempImg = new Image();
-        tempImg.onload = function() {
+        tempImg.onload = function () {
             imgDimensions.textContent = `${tempImg.width} x ${tempImg.height}px`;
         };
         tempImg.src = e.target.result;
     };
     reader.readAsDataURL(file);
+
+    // ✅ Read EXIF (even from HEIC)
+    try {
+        const exifData = await exifr.parse(file);
+        imgExifData.textContent = JSON.stringify(exifData, null, 2);
+    } catch (err) {
+        imgExifData.textContent = '❌ Failed to read metadata: ' + err.message;
+    }
 });

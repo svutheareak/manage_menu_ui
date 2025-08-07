@@ -707,11 +707,23 @@
             }
 
             .image-result-container {
-                flex-direction: column;
+                display: flex;
+                gap: 20px;
+                align-items: flex-start;
+                flex-wrap: wrap;
+                margin-top: 20px;
             }
+
             .image-preview {
-                max-width: 100%;
-                text-align: center;
+                flex: 1;
+                max-width: 300px;
+            }
+
+            .image-meta {
+                flex: 2;
+                background: #f8f8f8;
+                padding: 15px;
+                border-radius: 6px;
             }
         }
 
