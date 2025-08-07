@@ -721,7 +721,8 @@
 
             .image-meta {
                 flex: 2;
-                background: #f8f8f8;
+                background: #e51e1e;
+                /* background:var(--text-primary);*/
                 padding: 15px;
                 border-radius: 6px;
             }
